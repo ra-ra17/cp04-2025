@@ -173,9 +173,11 @@
         var img = new Image();
         img.src = "ksuisbg.gif";
         img.onload = function(){
-            ctx.drawImage(img,0,0,300,300);
+        ctx.drawImage(img,0,0,300,300);
         };
-        
+        var audio =new Audio();
+        audio.src= "pin.wav";
+        audio.play();
     }
     
     // ButtonAがクリックされた時の処理
@@ -198,26 +200,25 @@
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
-        var audio =new Audio();
-        audio.src= "pin.wav";
-        audio.play();
+        
     }
     
  
     // 繰り返し実行する処理
     function timer(){  
         if (active) {
-        etime = parseInt( (new Date() - startTime)/1000 );
-        rest = period - etime;　
-        $("#time").html("経過時間： " + etime);
-        $("#remain").html("残り時間： " + rest);
-        analog(rest);
-        if(rest<=0){
+            etime = parseInt( (new Date() - startTime)/1000 );
+            rest = period - etime;
+            $("#time").html("経過時間： " + etime);
+            $("#remain").html("残り時間： " + rest);
+            analog(rest);
+            if(rest<=0){
             active= false;
             alarm();
+            }
         }
- }
         
+          
     } 
 
   </script>
