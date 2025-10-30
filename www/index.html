@@ -156,6 +156,7 @@
     var period = 0;
     var rest = 0;
     var etime = 0;
+    var inter = false;
 
     
     // ボタンの初期設定
@@ -163,6 +164,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         
     }
 
@@ -233,7 +235,8 @@
     <div id="time">Time</div>
     <button id="btnA">ButtonA</button>  
     <button id="btnB">ButtonB</button>  
-    <button id="btnC">ButtonC</button>  
+    <button id="btnC">ButtonC</button> 
+    <button id="btnD">ButtonD</button>
     <input type="number" id="minute" value=3 >
     <input type="number" id="second" value=0 >
 </body>
