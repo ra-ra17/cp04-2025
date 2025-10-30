@@ -186,6 +186,7 @@
     function btnAClick(e){
         active = true;
         startTime = new Date();
+        inter = false;
         
     }
 
@@ -195,6 +196,11 @@
         
     }
 
+    function btuDClick(e){
+        inter = true;
+        
+    } 
+
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
         alarm();
@@ -202,8 +208,11 @@
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
+        $("#inter").html("インターバル秒数： ");
+
         
     }
+    
     
  
     // 繰り返し実行する処理
@@ -219,6 +228,9 @@
             alarm();
             }
         }
+        if(inter){
+
+        }
         
           
     } 
@@ -233,6 +245,7 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
+    <div id="inter">inter</div>
     <button id="btnA">ButtonA</button>  
     <button id="btnB">ButtonB</button>  
     <button id="btnC">ButtonC</button> 
