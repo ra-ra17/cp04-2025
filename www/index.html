@@ -156,7 +156,7 @@
     var period = 0;
     var rest = 0;
     var etime = 0;
-    var  interTime = 10;
+    var mode = "none";
 
 
     
@@ -165,23 +165,17 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        $('#btnD').prop('disabled', false);
         $("#remain").html("残り時間：");
         $("#time").html("経過時間：");
-        $("#inter").html("インターバル秒数： " + interTime);
+        $("#inter").html("Cボタンを押してください");
 
         
     }
 
     // Alarmの処理
     function alarm(){
-        var canvas = $("#mycanvas")[0]; 
-        var ctx = canvas.getContext("2d"); 
-        var img = new Image(); img.src = "ksuisbg.gif"; 
-        img.onload = function(){ ctx.drawImage(img,0,0,300,300); }; 
-        var audio =new Audio(); 
-        audio.src= "pin.wav";
-         audio.play();
+        const audio = new Audio("pin.wav");
+        audio.play();
         
     }
     
@@ -199,13 +193,13 @@
   
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
-
+        $('#btnA').prop('disabled', false);
+        $('#btnB').prop('disabled', false);
+        $("#inter").html("準備完了！Aで作業開始、Bで休憩開始");
       
         
     }
-     function  btnDClick(e){
-      
-   }
+     
     
  
     // 繰り返し実行する処理
@@ -234,7 +228,6 @@
     <button id="btnA">ButtonA</button>  
     <button id="btnB">ButtonB</button>  
     <button id="btnC">ButtonC</button> 
-    <button id="btnD">ButtonD</button>
     <input type="number" id="minute" value=3 >
     <input type="number" id="second" value=0 >
 </body>
