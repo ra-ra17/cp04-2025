@@ -185,9 +185,12 @@
     
     // ButtonAがクリックされた時の処理
     function btnAClick(e){
+        period = 60* parseInt($("#minute").val()) + parseInt($("#second").val());
         active = true;
         startTime = new Date();
-        inter = false;
+        rest = false;
+        $("#time").html("経過時間：0");
+        $("#remain").html("残り時間：" + period);
         
     }
 
