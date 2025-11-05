@@ -205,6 +205,14 @@
         if(!active) return;
         const now = new Date().getTime();
         const elapsed = Math.floor((now - startTime) / 1000);
+        rest = period - elapsed;
+        if(rest < 0)rest = 0;
+
+        analog(rest);
+
+        $("#remain").html("残り時間：" + Math.floor(rest/60) + "分" + (rest%60) + "秒");
+        $("#time").html("経過時間：" + elapsed + "秒");
+
         }
     
 
