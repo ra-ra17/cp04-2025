@@ -166,6 +166,10 @@
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
         $('#btnD').prop('disabled', false);
+        $("#remain").html("残り時間：");
+        $("#time").html("経過時間：");
+        $("#inter").html("インターバル秒数： " + interTime);
+
         
     }
 
@@ -196,7 +200,7 @@
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
-        active = false;
+        active = !active;
         
     }
 
@@ -206,14 +210,8 @@
 
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
-        alarm();
-        active = false;
-        period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
-        
-        $("#time").html("経過時間： 0");
-        $("#remain").html("残り時間： " + period);
-        $("#inter").html("インターバル秒数： "+ interTime);
-
+       activ = false;
+       rest = false;
         
     }
     
