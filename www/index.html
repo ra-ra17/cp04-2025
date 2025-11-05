@@ -216,12 +216,15 @@
         if(rest <= 0){
             active = false;
             alarm();
-        }
-    
 
-        
-        
-          
+            if(mode === "work"){
+               $("#inter").html(" 終了！お疲れさま！"); 
+            }else if(mode === "break"){
+                $("#inter").html(" 再開！");
+                }
+            $('#btnA').prop('disabled', false);
+            $('#btnB').prop('disabled', false); 
+         }  
     } 
 
   </script>
@@ -232,13 +235,12 @@
     <div id="minuteStr">〇</div>
     <div id="secondStr">〇</div>
 
-    <div id="remain">Remaining time</div>
-    <div id="time">Time</div>
-    <div id="inter">inter</div>
-    <button id="btnA">ButtonA</button>  
-    <button id="btnB">ButtonB</button>  
-    <button id="btnC">ButtonC</button> 
-    <input type="number" id="minute" value=3 >
-    <input type="number" id="second" value=0 >
+    <div id="remain">残り時間</div>
+    <div id="time">経過時間</div>
+    <div id="inter">ｃボタンを押してください</div>
+    <button id="btnA">A：タスク開始</button>  
+    <button id="btnB">B：休憩開始</button>  
+    <button id="btnC">C：スタート</button> 
+    
 </body>
 </html>
