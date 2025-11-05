@@ -181,8 +181,14 @@
     
     // ButtonAがクリックされた時の処理
     function btnAClick(e){
-        alarm();
-        
+        active = true;
+        mode = "work";
+        startTime = new Date().getTime();
+        period = 25 * 60;
+        rest = period;
+        $("#inter").html("活動中！");
+        $('#btnA').prop('disabled', true);
+        $('#btnB').prop('disabled', true);
     }
 
     // ButtonBがクリックされた時の処理
