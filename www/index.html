@@ -213,6 +213,9 @@
         $("#remain").html("残り時間：" + Math.floor(rest/60) + "分" + (rest%60) + "秒");
         $("#time").html("経過時間：" + elapsed + "秒");
 
+        if(rest <= 0){
+            active = false;
+            alarm();
         }
     
 
