@@ -196,16 +196,15 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $("#inter").html("準備完了！Aで作業開始、Bで休憩開始");
-      
-        
     }
      
     
  
     // 繰り返し実行する処理
     function timer(){  
-       
-            
+        if(!active) return;
+        const now = new Date().getTime();
+        const elapsed = Math.floor((now - startTime) / 1000);
         }
     
 
