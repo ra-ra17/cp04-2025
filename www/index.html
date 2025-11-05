@@ -156,7 +156,7 @@
     var period = 0;
     var rest = 0;
     var etime = 0;
-    var  interTime = 0;
+    var  interTime = 10;
 
 
     
@@ -175,20 +175,13 @@
 
     // Alarmの処理
     function alarm(){
-        var canvas = $("#mycanvas")[0];
-        var ctx = canvas.getContext("2d");
-        var img = new Image();
-        img.src = "ksuisbg.gif";
-        img.onload = function(){
-        ctx.drawImage(img,0,0,300,300);
-        };
-        var audio =new Audio();
-        audio.src= "pin.wav";
+        
+        var audio =new Audio("pin.wav");
         audio.play();
     }
     
     // ButtonAがクリックされた時の処理
-    function btnAClick(){
+    function btnAClick(e){
         period = 60* parseInt($("#minute").val()) + parseInt($("#second").val());
         active = true;
         startTime = new Date();
@@ -199,36 +192,50 @@
     }
 
     // ButtonBがクリックされた時の処理
-    function btnBClick(){
+    function btnBClick(e){
         active = !active;
         
     }
 
-   function  btnDClick(){
-      interTime += 10;
-    $("#inter").html("インターバル秒数： " + interTime);
-   }
+  
     // ButtonCがクリックされた時の処理
-    function btnCClick(){
-       activ = false;
+    function btnCClick(e){
+       active = false;
        rest = false;
        init();
         
     }
-    
+     function  btnDClick(e){
+      interTime += 10;
+        $("#inter").html("インターバル秒数： " + interTime);
+   }
     
  
     // 繰り返し実行する処理
     function timer(){  
-        if (active) {
-            etime = parseInt( (new Date() - startTime)/1000 );
+       if(!active) return;
+       etime = parseInt((new Date()- startTime)/1000);
+        if (!resting) {
             rest = period - etime;
-            $("#time").html("経過時間： " + etime);
-            $("#remain").html("残り時間： " + rest);
-            analog(rest);
-            if(rest<=0){
-            active= false;
-            alarm();
+            $("#time").html("経過時間：" + etime);
+            $("#remain").html("残り時間：" + rest);
+
+            if (rest <= 0) {
+                alarm();
+                rest = true;
+                startTime = new Date();
+            }
+        } else {
+            
+            var restEtime = parseInt((new Date() - startTime) / 1000);
+            var restRemain = interTime - restEtime;
+            $("#time").html("休憩経過時間：" + restEtime);
+            $("#remain").html("休憩残り時間：" + restRemain);
+
+            if (restRemain <= 0) {
+                alarm();
+                rest = false;
+                startTime = new Date();
             }
         }
     
