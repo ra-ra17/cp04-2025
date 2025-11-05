@@ -188,7 +188,7 @@
     }
     
     // ButtonAがクリックされた時の処理
-    function btnAClick(e){
+    function btnAClick(){
         period = 60* parseInt($("#minute").val()) + parseInt($("#second").val());
         active = true;
         startTime = new Date();
@@ -199,19 +199,20 @@
     }
 
     // ButtonBがクリックされた時の処理
-    function btnBClick(e){
+    function btnBClick(){
         active = !active;
         
     }
 
-   function  btnBClick(e){
-       interTime = interTime + 10;
+   function  btnDClick(){
+      interTime += 10;
+    $("#inter").html("インターバル秒数： " + interTime);
    }
-
     // ButtonCがクリックされた時の処理
-    function btnCClick(e){
+    function btnCClick(){
        activ = false;
        rest = false;
+       init();
         
     }
     
