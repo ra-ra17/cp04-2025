@@ -193,7 +193,14 @@
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
-        
+        active = true;
+        mode = "break";
+        startTime = new Date().getTime();
+        period = 5 * 60;
+        rest = period;
+        $("#inter").html("休憩中！");
+        $('#btnA').prop('disabled', true);
+        $('#btnB').prop('disabled', true);
     }
 
   
